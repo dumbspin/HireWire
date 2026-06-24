@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local model weights
+models/
+
+# Large datasets / files from the challenge
+\[PUB\]\ India_runs_data_and_ai_challenge/
+*.jsonl
+*.jsonl.gz
+
+# Local OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,58 @@
+team_name: "Astryx"
+
+primary_contact:
+  name: "Team Lead"
+  email: "lead@example.com"
+  phone: "+91-9999999999"
+
+team_members:
+  - name: "Team Lead"
+    email: "lead@example.com"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/dumbspin/HireWire"
+sandbox_link: "https://huggingface.co/spaces/dumbspin1/HireWire"
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --jd ./job_description.docx --out ./submission.csv"
+
+compute:
+  platform: "Windows 11 Local Machine"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.13.3"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 1
+
+ai_tools_used:
+  - "Gemini / Antigravity"
+
+ai_usage_summary: |
+  Used Antigravity (Gemini-based AI agent) for architecture design, code generation,
+  and iterative debugging. No candidate data was fed to any external LLM.
+  All scoring logic is deterministic and rule-based; the sentence-transformers
+  model runs fully locally (offline) for skill similarity computation.
+
+methodology_summary: |
+  Hybrid rule-based + semantic ranker. Five weighted scoring components:
+  skills match (35%, semantic + trust multiplier via all-MiniLM-L6-v2),
+  career trajectory (25%, title relevance + production keyword density),
+  experience alignment (15%, Gaussian centered at 7 yrs),
+  location/availability (10%, city preference + notice period),
+  education (5%, institution tier + field relevance).
+  Behavioral multiplier (profile completeness, recruiter response rate,
+  interview completion, github activity) scales the raw score.
+  Six hard disqualifiers cap scores: consulting-only (0.15),
+  no recent production code (0.20), title-chaser (0.25),
+  LLM-wrapper-only under 12 months (0.20), academic-only (0.20),
+  CV/speech/robotics without NLP (0.25). Honeypots (company founding date
+  mismatch, expert skills with 0 duration) capped at 0.10.
+  Runtime: ~2-3 minutes for 100K candidates on CPU.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
