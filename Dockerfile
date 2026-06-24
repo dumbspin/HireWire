@@ -30,4 +30,4 @@ COPY . /code
 EXPOSE 7860
 
 # Run Streamlit on port 7860
-CMD ["streamlit", "run", "demo/app.py", "--server.port=7860", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "demo/app.py", "--server.port=7860", "--server.address=0.0.0.0", "--server.enableXsrfProtection=false"]
